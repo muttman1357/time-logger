@@ -7,6 +7,7 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import { SharedComponent } from './shared/shared.component';
 
 
 @NgModule({

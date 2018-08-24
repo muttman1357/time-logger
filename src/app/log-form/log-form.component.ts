@@ -34,7 +34,12 @@ export class LogFormComponent implements OnInit {
   submitLogForm(form: FormGroup) {
     if (form.valid) {
       const values = this.myForm.value;
-      const time = new Time(values.date, values.project, values.hours, values.description);
+      const time = {
+        date: Time.mutateDate(values.date),
+        project: values.project,
+        hours: values.hours,
+        description: values.description
+      };
       this.logFormDataService.postTime('times', time);
     }
 

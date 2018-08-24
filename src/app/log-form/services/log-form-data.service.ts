@@ -7,7 +7,7 @@ export class LogFormDataService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  postTime(list: string, item: Time): void {
+  postTime(list: string, item: object): void {
     this.db.list(list).push(item);
   }
 

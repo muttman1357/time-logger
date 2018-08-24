@@ -1,21 +1,21 @@
 import {NgModule} from '@angular/core';
 import {MainComponent} from './main.component';
-import {DetailLogComponent} from '../detail-log/detail-log.component';
 import {CalComponent} from '../cal/cal.component';
 import {CommonModule} from '@angular/common';
 import {LogFormModule} from '../log-form/log-form.module';
 import {TimeLogModule} from '../timelog/timelog.module';
+import {DetailLogModule} from '../detail-log/detail-log.module';
 
 @NgModule({
   declarations: [
     MainComponent,
-    CalComponent,
-    DetailLogComponent
+    CalComponent
   ],
   imports: [
     CommonModule,
     LogFormModule,
-    TimeLogModule
+    TimeLogModule,
+    DetailLogModule
   ],
   exports: [MainComponent],
   providers: []

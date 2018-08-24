@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
+  logId: string;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getLog(e) {
+    this.logId = e;
   }
 
 }

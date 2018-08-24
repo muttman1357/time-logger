@@ -1,3 +1,5 @@
-<p>
-  detail-log works!
-</p>
+<div class="log-detail-container" *ngIf="log !== undefined">
+  <p>Date: {{log.date}} <span>Hours: {{log.hours}}</span></p>
+  <p>Project Name: {{log.project}}</p>
+  <p>Description: {{log.description}}</p>
+</div>

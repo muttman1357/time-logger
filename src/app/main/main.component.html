@@ -7,7 +7,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <section>
-        <tl-timelog></tl-timelog>
+        <tl-timelog (log)="getLog($event)"></tl-timelog>
       </section>
     </div>
   </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <section>
-        <tl-detail-log></tl-detail-log>
+        <tl-detail-log [logId]="logId"></tl-detail-log>
       </section>
     </div>
   </div>
