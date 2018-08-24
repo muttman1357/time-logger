@@ -2,6 +2,7 @@
   height: 461px;
   overflow: scroll;
   .log-item {
+    background-color: #e3e0cc;
     margin-bottom: 5px;
     padding: 10px;
     border: 1px solid black;
@@ -13,6 +14,9 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    .log-item-p {
+      margin: 0;
     }
     .hidden {
       display: none;

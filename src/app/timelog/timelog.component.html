@@ -1,8 +1,8 @@
 <div class="logs-container">
   <div class="log-item" *ngFor="let log of logs | orderBy : '-'" (click)="showDetails(log.key)">
-    <p class="hidden">{{log.key}}</p>
-    <p>Date: {{log.date}} <span class="log-item-hours">Hours: {{log.hours}}</span></p>
-    <p>Project Name: {{log.project}}</p>
-    <p class="log-item-desc">{{log.description}}</p>
+    <p class="log-item-p hidden">{{log.key}}</p>
+    <p class="log-item-p">Date: {{log.date}} <span class="log-item-hours">Hours: {{log.hours}}</span></p>
+    <p class="log-item-p">Project Name: {{log.project}}</p>
+    <p class="log-item-p log-item-desc">{{log.description}}</p>
   </div>
 </div>
