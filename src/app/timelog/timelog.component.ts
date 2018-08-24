@@ -2,8 +2,6 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {TimelogDataService} from './services/timelog-data.service';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
-import {computeMsgId} from '@angular/compiler/src/i18n/digest';
-import {SharedService} from '../shared/services/shared.service';
 
 @Component({
   selector: 'tl-timelog',
