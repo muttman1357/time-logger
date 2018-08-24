@@ -1,0 +1,31 @@
+<div>
+  <form [formGroup]="myForm" autocomplete="off" novalidate (ngSubmit)="submitLogForm(myForm)">
+
+      <div class="form-field">
+        <label>Date:</label><br>
+        <input title="date" [matDatepicker]="myDatepicker" formControlName="date">
+        <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+        <div class="field-error-message" *ngIf="myForm.controls['date'].errors?.required && myForm.controls['date'].touched">Field is Mandatory</div>
+      </div>
+      <div class="form-field">
+        <label>Project:</label><br>
+        <input class="form-field-input" title="project" formControlName="project">
+        <div class="field-error-message" *ngIf="myForm.controls['project'].errors?.required && myForm.controls['project'].touched">Field is Mandatory</div>
+      </div>
+    <div class="form-field">
+      <label>Hours:</label><br>
+      <input type="number" class="form-field-input" title="hours" formControlName="hours">
+      <div class="field-error-message" *ngIf="myForm.controls['hours'].errors?.required && myForm.controls['hours'].touched">Field is Mandatory</div>
+      <div class="field-error-message" *ngIf="myForm.controls['hours'].errors?.pattern && myForm.controls['hours'].touched">Numbers only</div>
+    </div>
+      <div class="form-field">
+        <label>Description:</label><br>
+        <textarea class="form-field-input" rows="8" title="description" formControlName="description"></textarea>
+        <div class="field-error-message" *ngIf="myForm.controls['description'].errors?.required && myForm.controls['description'].touched">Field is Mandatory</div>
+      </div>
+    <p>
+      <button class="lesson-button" type="submit">Submit</button>
+    </p>
+  </form>
+</div>
