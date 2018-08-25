@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tl';
+  show = false;
+
+  toggleNav() {
+    this.show = !this.show;
+  }
+
+  hideNav() {
+    this.show = false;
+  }
 }

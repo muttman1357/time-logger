@@ -1,0 +1,16 @@
+@media (min-width: 992px) {
+  nav {
+    .navbar-collapse {
+      transition: height 0.3s, visibility 0.2s, opacity 0.2s linear;
+      &.collapse:not(.show) {
+        height: unset !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      &.show {
+        height: unset !important;
+      }
+    }
+  }
+
+}
