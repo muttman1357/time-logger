@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {LogFormModule} from '../log-form/log-form.module';
 import {TimeLogModule} from '../timelog/timelog.module';
 import {DetailLogModule} from '../detail-log/detail-log.module';
+import {MainRouting} from './main.routing';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {DetailLogModule} from '../detail-log/detail-log.module';
     CommonModule,
     LogFormModule,
     TimeLogModule,
-    DetailLogModule
+    DetailLogModule,
+    MainRouting
   ],
   exports: [MainComponent],
   providers: []
