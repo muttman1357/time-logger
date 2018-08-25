@@ -1,9 +1,10 @@
 <div>
-  <form [formGroup]="myForm" autocomplete="off" novalidate (ngSubmit)="submitLogForm(myForm)">
+  <form *ngIf="time"  [formGroup]="myForm" autocomplete="off" novalidate (ngSubmit)="submitLogForm(myForm)">
 
     <div class="form-field">
       <label>Date:</label><br>
-      <input title="date" [matDatepicker]="myDatepicker" formControlName="date">
+      <!--<input title="date" formControlName="date" [(ngModel)]="time['date']">-->
+      <input name="date" title="date" [matDatepicker]="myDatepicker" formControlName="date" [value]="'1/1/2018'">
       <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>
       <div class="field-error-message" *ngIf="myForm.controls['date'].errors?.required && myForm.controls['date'].touched">Field is Mandatory</div>
@@ -25,7 +26,7 @@
       <div class="field-error-message" *ngIf="myForm.controls['description'].errors?.required && myForm.controls['description'].touched">Field is Mandatory</div>
     </div>
     <p>
-      <button class="btn btn-dark" type="submit">Save</button>
+      <button class="btn btn-dark" type="submit">Update</button>
     </p>
   </form>
 </div>

@@ -42,8 +42,9 @@ export class LogFormComponent implements OnInit {
       };
       this.logFormDataService.postTime('times', time);
     }
-
-    console.log('The form is not valid');
+    else {
+      console.log('The form is not valid');
+    }
   }
 
 }

@@ -6,6 +6,7 @@ import {UpdateRouting} from './update.routing';
 import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {UpdateDataService} from './services/update-data.service';
 
 @NgModule({
   declarations: [UpdateComponent],
@@ -18,7 +19,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
   ],
   exports: [UpdateComponent],
-  providers: [UpdateService]
+  providers: [UpdateService, UpdateDataService]
 })
 
 export class UpdateModule {}
