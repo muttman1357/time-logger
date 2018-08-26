@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {TimelogDataService} from './services/timelog-data.service';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'tl-timelog',
@@ -14,7 +15,8 @@ export class TimelogComponent implements OnInit {
   logSub: Subscription;
 
   constructor(
-    private timelogDataService: TimelogDataService
+    private timelogDataService: TimelogDataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class TimelogComponent implements OnInit {
 
   showDetails(logItem) {
     this.log.emit(logItem);
+  }
+
+  updateLog(id) {
+    this.router.navigate(['/update', id]);
   }
 
 }

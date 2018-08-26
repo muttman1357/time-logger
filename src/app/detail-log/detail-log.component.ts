@@ -21,14 +21,14 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
     if(changes.logId.currentValue) {
       let logId = changes.logId.currentValue;
       this.sub = this.detailLogDataService.getLogById('/times', logId).subscribe(
-        data => this.log = data
+        data => this.log = data,
+        error => console.log(error)
       );
     }
-
   }
 
-  getDetailLogFromId() {
-
+  deleteLog() {
+    this.detailLogDataService.deleteLogById('/times', this.logId);
   }
 
   ngOnDestroy() {

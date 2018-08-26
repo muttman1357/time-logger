@@ -12,4 +12,8 @@ export class DetailLogDataService {
     return this.db.object(`/${listPath}/${id}`).valueChanges();
   }
 
+  deleteLogById(listPath: string, id: string) {
+      this.db.object(`${listPath}/${id}`).remove();
+  }
+
 }
