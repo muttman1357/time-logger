@@ -12,7 +12,6 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
   @Input() logId;
   log: object;
   private sub: Subscription;
-  private logItem: object;
 
   constructor(private detailLogDataService: DetailLogDataService) { }
 

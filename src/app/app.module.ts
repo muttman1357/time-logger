@@ -8,7 +8,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {UpdateModule} from './update/update.module';
-
+import {ReportsModule} from './reports/reports.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import {UpdateModule} from './update/update.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    UpdateModule
+    UpdateModule,
+    ReportsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
