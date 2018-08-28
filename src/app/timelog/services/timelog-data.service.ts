@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-
 
 @Injectable()
 export class TimelogDataService {
