@@ -1,5 +1,5 @@
 <div class="logs-container">
-  <div class="log-item" *ngFor="let log of logs | orderBy : '-'" (click)="showDetails(log.key)">
+  <div class="log-item" *ngFor="let log of logs" (click)="showDetails(log.key)">
     <p class="log-item-p hidden">{{log.key}}</p>
     <p class="log-item-p">Date: {{log.date}}
       <span class="log-item-hours">Hours: {{log.hours}}</span>

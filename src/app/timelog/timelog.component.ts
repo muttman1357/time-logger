@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TimelogDataService} from './services/timelog-data.service';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
@@ -21,7 +21,7 @@ export class TimelogComponent implements OnInit {
 
   ngOnInit() {
     this.logSub = this.timelogDataService.getLogs('/times').subscribe(
-      data => this.logs = data
+      data => this.logs = this.sortLogs(data)
     );
   }
 
@@ -31,6 +31,12 @@ export class TimelogComponent implements OnInit {
 
   updateLog(id) {
     this.router.navigate(['/update', id]);
+  }
+
+  sortLogs(logs) {
+    return logs.sort((a: any, b: any) =>
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   }
 
 }
