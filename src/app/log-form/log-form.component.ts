@@ -15,10 +15,10 @@ export class LogFormComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      date: ['', [
+      start: ['', [
         Validators.required
       ]],
-      project: ['', [
+      title: ['', [
         Validators.required
       ]],
       hours: ['', [
@@ -35,8 +35,8 @@ export class LogFormComponent implements OnInit {
     if (form.valid) {
       const values = this.myForm.value;
       const time = {
-        date: Time.mutateDate(values.date),
-        project: values.project,
+        start: Time.mutateDate(values.start),
+        title: values.title,
         hours: values.hours,
         description: values.description
       };

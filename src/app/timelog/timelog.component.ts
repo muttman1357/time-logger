@@ -34,8 +34,9 @@ export class TimelogComponent implements OnInit {
   }
 
   sortLogs(logs) {
+    debugger;
     return logs.sort((a: any, b: any) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
+      new Date(b.start).getTime() - new Date(a.start).getTime()
     );
   }
 

@@ -1,11 +1,11 @@
 <div class="logs-container">
   <div class="log-item" *ngFor="let log of logs" (click)="showDetails(log.key)">
     <p class="log-item-p hidden">{{log.key}}</p>
-    <p class="log-item-p">Date: {{log.date}}
+    <p class="log-item-p">Date: {{log.start}}
       <span class="log-item-hours">Hours: {{log.hours}}</span>
       <button class="float-right btn btn-dark" type="submit" (click)="updateLog(log.key)">Update</button>
     </p>
-    <p class="log-item-p">Project Name: {{log.project}}</p>
+    <p class="log-item-p">Project Name: {{log.title}}</p>
     <p class="log-item-p log-item-desc">{{log.description}}</p>
   </div>
 </div>

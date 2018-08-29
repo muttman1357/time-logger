@@ -3,15 +3,15 @@
 
       <div class="form-field">
         <label>Date:</label><br>
-        <input title="date" [matDatepicker]="myDatepicker" formControlName="date">
+        <input title="start" [matDatepicker]="myDatepicker" formControlName="start">
         <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
         <mat-datepicker #myDatepicker></mat-datepicker>
-        <div class="field-error-message" *ngIf="myForm.controls['date'].errors?.required && myForm.controls['date'].touched">Field is Mandatory</div>
+        <div class="field-error-message" *ngIf="myForm.controls['start'].errors?.required && myForm.controls['start'].touched">Field is Mandatory</div>
       </div>
       <div class="form-field">
         <label>Project:</label><br>
-        <input class="form-field-input" title="project" formControlName="project">
-        <div class="field-error-message" *ngIf="myForm.controls['project'].errors?.required && myForm.controls['project'].touched">Field is Mandatory</div>
+        <input class="form-field-input" title="title" formControlName="title">
+        <div class="field-error-message" *ngIf="myForm.controls['title'].errors?.required && myForm.controls['title'].touched">Field is Mandatory</div>
       </div>
     <div class="form-field">
       <label>Hours:</label><br>
