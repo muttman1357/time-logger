@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import {CalDataService} from './services/cal-data.service';
@@ -9,15 +9,12 @@ import {CalDataService} from './services/cal-data.service';
   styleUrls: ['./cal.component.scss']
 })
 export class CalComponent implements OnInit {
+  @Output() log = new EventEmitter<string>();
   calendarOptions: Options;
   events = [];
 
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  data = {
-      title: 'New event',
-      start: '2018-08-07',
-      end: '2018-08-07'
-  };
+
   constructor(private calDataService: CalDataService) {}
 
   ngOnInit() {
@@ -32,7 +29,7 @@ export class CalComponent implements OnInit {
           right: 'month,agendaWeek,agendaDay,listMonth'
         },
         selectable: true,
-        events: data,
+        events: data
       };
     });
   }
@@ -48,16 +45,16 @@ export class CalComponent implements OnInit {
 
 
 
-  clickButton() {
-    console.log('clickButton clicked!!');
+  clickButton(e) {
+    console.log(e, 'clickButton clicked!!');
   }
 
-  updateEvent() {
-    console.log('updateevent clicked!!');
+  updateEvent(e) {
+    console.log(e, 'updateevent clicked!!');
   }
 
-  eventClick() {
-    console.log('event clicked!!');
+  eventClick(e) {
+    this.log.emit(e.event.key);
   }
 
 }
