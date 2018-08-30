@@ -1,24 +1,27 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import {CalDataService} from './services/cal-data.service';
+import {Subscription} from 'rxjs/Subscription';
+import {SharedService} from '../shared/services/shared.service';
 
 @Component({
   selector: 'tl-cal',
   templateUrl: './cal.component.html',
   styleUrls: ['./cal.component.scss']
 })
-export class CalComponent implements OnInit {
+export class CalComponent implements OnInit, OnDestroy {
   @Output() log = new EventEmitter<string>();
   calendarOptions: Options;
   events = [];
+  private calSub: Subscription;
 
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  constructor(private calDataService: CalDataService) {}
+  constructor(private calDataService: CalDataService, private sharedService: SharedService) {}
 
   ngOnInit() {
-    this.calDataService.getEvents('/times').subscribe(
+    this.calSub = this.calDataService.getEvents('/times').subscribe(
       data => {
       this.calendarOptions = {
         editable: true,
@@ -31,30 +34,36 @@ export class CalComponent implements OnInit {
         selectable: true,
         events: data
       };
-    });
+      },
+      error => console.log(error)
+    );
+
+    this.sharedService.eventLoader.subscribe(
+      data => {
+        if(data === true) {
+          this.loadEvents();
+        }
+      }
+    );
+
   }
-  clearEvents() {
-    this.events = [];
-  }
+
   loadEvents() {
-    this.calDataService.getEvents('/times').subscribe(data => {
-      this.events = data;
-      console.log(this.events);
-    });
-  }
-
-
-
-  clickButton(e) {
-    console.log(e, 'clickButton clicked!!');
-  }
-
-  updateEvent(e) {
-    console.log(e, 'updateevent clicked!!');
+    this.calDataService.getEvents('/times').subscribe(
+      data => {
+        this.calendarOptions.events = data;
+        this.ucCalendar.renderEvents(this.calendarOptions.events);
+      },
+      error => console.log(error)
+    );
   }
 
   eventClick(e) {
     this.log.emit(e.event.key);
+  }
+
+  ngOnDestroy() {
+    this.calSub.unsubscribe();
   }
 
 }

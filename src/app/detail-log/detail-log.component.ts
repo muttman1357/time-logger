@@ -13,7 +13,10 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
   log: object;
   private sub: Subscription;
 
-  constructor(private detailLogDataService: DetailLogDataService) { }
+  constructor(
+    private detailLogDataService: DetailLogDataService,
+    private sharedService: SharedService
+  ) { }
 
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
@@ -28,6 +31,7 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
 
   deleteLog() {
     this.detailLogDataService.deleteLogById('/times', this.logId);
+    this.sharedService.reLoadEvents();
   }
 
   ngOnDestroy() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LogFormDataService} from './services/log-form-data.service';
 import {Time} from './classes/Time';
+import {SharedService} from '../shared/services/shared.service';
 
 @Component({
   selector: 'tl-log-form',
@@ -11,7 +12,10 @@ import {Time} from './classes/Time';
 export class LogFormComponent implements OnInit {
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private logFormDataService: LogFormDataService) {}
+  constructor(
+    private fb: FormBuilder,
+    private logFormDataService: LogFormDataService,
+    private sharedService: SharedService) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -41,6 +45,7 @@ export class LogFormComponent implements OnInit {
         description: values.description
       };
       this.logFormDataService.postTime('times', time);
+      this.sharedService.reLoadEvents();
     }
     else {
       console.log('The form is not valid');

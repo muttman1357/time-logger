@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {LogFormComponent} from './log-form.component';
 import {LogFormDataService} from './services/log-form-data.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {LogFormDataService} from './services/log-form-data.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    SharedModule
   ],
   exports: [
     LogFormComponent
