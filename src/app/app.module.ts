@@ -9,6 +9,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {UpdateModule} from './update/update.module';
 import {ReportsModule} from './reports/reports.module';
+import {AddModule} from './add/add.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ReportsModule} from './reports/reports.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     UpdateModule,
-    ReportsModule
+    ReportsModule,
+    AddModule
   ],
   providers: [],
   bootstrap: [AppComponent]

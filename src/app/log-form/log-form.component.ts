@@ -4,6 +4,7 @@ import {LogFormDataService} from './services/log-form-data.service';
 import {SharedService} from '../shared/services/shared.service';
 import {Time} from '../shared/classes/Time';
 import {Subscription} from 'rxjs/Subscription';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'tl-log-form',
@@ -17,7 +18,8 @@ export class LogFormComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private logFormDataService: LogFormDataService,
-    private sharedService: SharedService) {}
+    private sharedService: SharedService,
+    private location: Location) {}
 
   ngOnInit() {
 
@@ -37,7 +39,9 @@ export class LogFormComponent implements OnInit, OnDestroy {
       ]]
     });
 
-    this.sharedService.addEventSubject.subscribe(
+    // data.date is a Moment. Add a day to it and then
+    // convert it to a Date.
+    this.dateSub = this.sharedService.addEventSubject.subscribe(
       data => {
         let momentDate = data['date'].add(1, 'days').toDate();
         this.myForm.controls['start'].setValue(momentDate);
@@ -45,6 +49,9 @@ export class LogFormComponent implements OnInit, OnDestroy {
     );
   }
 
+  cancel() {
+    this.location.back();
+  }
 
 
   submitLogForm(form: FormGroup) {
@@ -57,7 +64,7 @@ export class LogFormComponent implements OnInit, OnDestroy {
         description: values.description
       };
       this.logFormDataService.postTime('times', time);
-      this.sharedService.reLoadEvents();
+      this.location.back();
     }
     else {
       console.log('The form is not valid');
