@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LogFormDataService} from './services/log-form-data.service';
-import {Time} from './classes/Time';
 import {SharedService} from '../shared/services/shared.service';
+import {Time} from '../shared/classes/Time';
 
 @Component({
   selector: 'tl-log-form',

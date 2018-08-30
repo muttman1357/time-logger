@@ -1,4 +1,4 @@
-import {Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChange} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, SimpleChange} from '@angular/core';
 import {SharedService} from '../shared/services/shared.service';
 import {Subscription} from 'rxjs/Subscription';
 import {DetailLogDataService} from './services/detail-log-data.service';

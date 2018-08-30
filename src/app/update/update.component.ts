@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {UpdateDataService} from './services/update-data.service';
 import {ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
-import {Time} from './classes/Time';
+import {Time} from '../shared/classes/Time';
 
 @Component({
   selector: 'tl-update',
@@ -31,21 +31,21 @@ export class UpdateComponent implements OnInit, OnDestroy {
       data => {
 
         // need to convert string date to Date or it wont auto-populate field
-        data.date = this.convertStrDate(data.date);
+        // data.start = this.convertStrDate(data.start);
 
-        this.time = data;
+        this.time = new Time(this.id, data.start, data.title, data.hours, data.description);
           this.myForm = this.fb.group({
-          date: [data.date, [
+          start: [this.convertStrDate(this.time['start']), [
             Validators.required
           ]],
-          project: [data.project, [
+          title: [this.time['title'], [
             Validators.required
           ]],
-          hours: [data.hours, [
+          hours: [this.time['hours'], [
             Validators.required,
             Validators.pattern(/[0-9]/)
           ]],
-          description: [data.description, [
+          description: [this.time['description'], [
             Validators.required
           ]]
         });
@@ -58,8 +58,8 @@ export class UpdateComponent implements OnInit, OnDestroy {
     if (form.valid) {
       const values = this.myForm.value;
       const time = {
-        date: Time.mutateDate(values.date),
-        project: values.project,
+        start: Time.mutateDate(values.start),
+        title: values.title,
         hours: values.hours,
         description: values.description
       };
@@ -71,11 +71,22 @@ export class UpdateComponent implements OnInit, OnDestroy {
     }
   }
 
-  convertStrDate(date) {
+  cancelUpdate() {
+    this.location.back();
+  }
+
+  /**
+   * Converts a string to a Date object. parts[1] has a double digit. So it
+   * slices returning the last digit and reduces it by one because js months
+   * are zero based.
+   * @param date
+   * @returns {Date}
+   */
+  convertStrDate(date): Date {
     // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
     // January - 0, February - 1, etc.
-    let parts = date.split('/');
-    return new Date(parts[2], parts[0] - 1, parts[1],);
+    let parts = date.split('-');
+    return new Date(parts[0], (parts[1].slice(-1)) - 1, parts[2]);
   }
 
   ngOnDestroy() {
