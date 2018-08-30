@@ -58,6 +58,11 @@ export class CalComponent implements OnInit, OnDestroy {
     );
   }
 
+  dayClick(e) {
+    console.log(e);
+    this.sharedService.addEvent(e);
+  }
+
   eventClick(e) {
     this.log.emit(e.event.key);
   }

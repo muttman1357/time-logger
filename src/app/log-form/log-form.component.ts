@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LogFormDataService} from './services/log-form-data.service';
 import {SharedService} from '../shared/services/shared.service';
 import {Time} from '../shared/classes/Time';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'tl-log-form',
   templateUrl: './log-form.component.html',
   styleUrls: ['./log-form.component.scss']
 })
-export class LogFormComponent implements OnInit {
+export class LogFormComponent implements OnInit, OnDestroy {
   myForm: FormGroup;
+  dateSub: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -18,6 +20,7 @@ export class LogFormComponent implements OnInit {
     private sharedService: SharedService) {}
 
   ngOnInit() {
+
     this.myForm = this.fb.group({
       start: ['', [
         Validators.required
@@ -33,7 +36,16 @@ export class LogFormComponent implements OnInit {
         Validators.required
       ]]
     });
+
+    this.sharedService.addEventSubject.subscribe(
+      data => {
+        let momentDate = data['date'].add(1, 'days').toDate();
+        this.myForm.controls['start'].setValue(momentDate);
+      }
+    );
   }
+
+
 
   submitLogForm(form: FormGroup) {
     if (form.valid) {
@@ -51,5 +63,11 @@ export class LogFormComponent implements OnInit {
       console.log('The form is not valid');
     }
   }
+
+  ngOnDestroy() {
+    this.dateSub.unsubscribe();
+  }
+
+
 
 }
