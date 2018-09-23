@@ -16,4 +16,8 @@ export class DetailLogDataService {
       this.db.object(`${listPath}/${id}`).remove();
   }
 
+  updateTime(id: string, listPath: string, item: object): void {
+    this.db.object(`${listPath}/${id}`).update(item);
+  }
+
 }

@@ -12,9 +12,9 @@
         <tl-cal (log)="getLog($event)"></tl-cal>
       </section>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-12 main-div-pos">
       <section>
-        <tl-detail-log [logId]="logId"></tl-detail-log>
+        <tl-detail-log (resetLog)="resetLog($event)" [logId]="logId"></tl-detail-log>
       </section>
     </div>
   </div>

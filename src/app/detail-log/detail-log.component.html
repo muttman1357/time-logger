@@ -1,8 +1,10 @@
-<div class="log-detail-container" *ngIf="log">
-  <p>Date: {{log?.start | date}}
+<div class="log-detail-container" *ngIf="showLog">
+  <p>Project Name: {{log?.title}}
     <span class="log-item-hours">Hours: {{log?.hours}}</span>
-    <button class="float-right btn btn-dark" type="submit" (click)="deleteLog()">Delete</button>
+    <i class="close-button material-icons float-right" (click)="closeLog()">close</i>
   </p>
-  <p>Project Name: {{log?.title}}</p>
+  <p>Date: {{log?.start | date}}</p>
   <p>Description: {{log.description}}</p>
+  <button class="btn btn-dark" type="button" (click)="deleteLog()">Delete</button>
+  <button class="btn btn-dark" type="button" (click)="updateLog()">Update</button>
 </div>

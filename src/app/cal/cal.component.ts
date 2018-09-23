@@ -74,6 +74,7 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   eventClick(e) {
+    console.log(e);
     this.log.emit(e.event.key);
   }
 

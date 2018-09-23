@@ -12,6 +12,11 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 
+  resetLog(e) {
+    debugger;
+    this.logId = e;
+  }
+
   getLog(e) {
     this.logId = e;
   }
