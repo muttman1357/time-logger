@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChange} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange} from '@angular/core';
 import {SharedService} from '../shared/services/shared.service';
 import {Subscription} from 'rxjs/Subscription';
 import {DetailLogDataService} from './services/detail-log-data.service';
@@ -9,18 +9,29 @@ import {Router} from '@angular/router';
   templateUrl: './detail-log.component.html',
   styleUrls: ['./detail-log.component.scss']
 })
-export class DetailLogComponent implements OnChanges, OnDestroy {
+export class DetailLogComponent implements OnChanges, OnDestroy, OnInit {
   @Input() logId;
   @Output() resetLog = new EventEmitter<string>();
   log: object;
-  showLog = false;
   private sub: Subscription;
+  private sub2: Subscription;
 
   constructor(
     private detailLogDataService: DetailLogDataService,
     private sharedService: SharedService,
-    private router: Router,
+    private router: Router
   ) { }
+
+  ngOnInit() {
+    if(this.logId) {
+      this.sub2 = this.detailLogDataService.getLogById('/times', this.logId).subscribe(
+        data => {
+          this.log = data;
+        },
+        error => console.log(error)
+      );
+    }
+  }
 
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
@@ -29,7 +40,6 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
       this.sub = this.detailLogDataService.getLogById('/times', logId).subscribe(
         data => {
           this.log = data;
-          this.showLog = true;
         },
         error => console.log(error)
       );
@@ -37,7 +47,7 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
   }
 
   closeLog() {
-    this.showLog = false;
+    this.resetLog.emit();
   }
 
   updateLog() {
@@ -47,6 +57,7 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
   deleteLog() {
     this.detailLogDataService.deleteLogById('/times', this.logId);
     this.sharedService.reLoadEvents();
+    this.closeLog();
   }
 
 
@@ -54,6 +65,9 @@ export class DetailLogComponent implements OnChanges, OnDestroy {
   ngOnDestroy() {
     if(this.sub) {
       this.sub.unsubscribe();
+    }
+    if(this.sub2) {
+      this.sub2.unsubscribe();
     }
   }
 

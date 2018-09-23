@@ -13,8 +13,7 @@ export class MainComponent implements OnInit {
   }
 
   resetLog(e) {
-    debugger;
-    this.logId = e;
+    this.logId = null;
   }
 
   getLog(e) {

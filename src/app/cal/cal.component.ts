@@ -68,7 +68,6 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   dayClick(e) {
-    console.log(e);
     this.sharedService.addEvent(e);
     this.router.navigate(['/add']);
   }
