@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 export class DetailLogComponent implements OnChanges, OnDestroy, OnInit {
   @Input() logId;
   @Output() resetLog = new EventEmitter<string>();
-  log: object;
+  log;
   private sub: Subscription;
   private sub2: Subscription;
 

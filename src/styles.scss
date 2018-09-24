@@ -13,4 +13,13 @@ html {
   }
 }
 
+/****************** FullCalendar *******************/
+td.fc-event-container {
+  &:before {
+    content: "before";
+  }
+  &:after {
+    content: "after";
+  }
+}
 
