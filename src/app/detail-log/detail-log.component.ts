@@ -55,9 +55,12 @@ export class DetailLogComponent implements OnChanges, OnDestroy, OnInit {
   }
 
   deleteLog() {
-    this.detailLogDataService.deleteLogById('/times', this.logId);
-    this.sharedService.reLoadEvents();
-    this.closeLog();
+    let result = window.confirm('Are you sure you want to delete this?');
+    if(result) {
+      this.detailLogDataService.deleteLogById('/times', this.logId);
+      this.sharedService.reLoadEvents();
+      this.closeLog();
+    }
   }
 
 

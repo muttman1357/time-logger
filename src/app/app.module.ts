@@ -10,6 +10,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {UpdateModule} from './update/update.module';
 import {ReportsModule} from './reports/reports.module';
 import {AddModule} from './add/add.module';
+import {LoginModule} from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AddModule} from './add/add.module';
     AngularFireAuthModule,
     UpdateModule,
     ReportsModule,
-    AddModule
+    AddModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
