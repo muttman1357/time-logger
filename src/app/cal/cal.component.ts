@@ -70,16 +70,13 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
   eventMouseOver(e) {
     let ren = this.eventRender(e);
     let target = ren.detail.jsEvent.currentTarget;
-    console.log(ren.detail.event.title);
     target.insertAdjacentHTML('afterbegin', '<div class="tl-popover">' + ren.detail.event.title + '<div class="arrow-down"></div></div>');
   }
 
   eventMouseOut(e) {
     let ren = this.eventRender(e);
-    // let target = ren.detail.jsEvent.currentTarget;
-    // let el = target.getElementById('popover');
-    // debugger;
-    // el.remove();
+    let target = ren.detail.jsEvent.currentTarget;
+    target.removeChild(target.firstElementChild);
   }
 
   eventRender(e) {
