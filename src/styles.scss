@@ -2,13 +2,14 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "assets/media-queries.scss";
 @import "../node_modules/fullcalendar/dist/fullcalendar.css";
+@import "assets/styles/full-calendar.css";
 @import "../node_modules/material-design-icons/iconfont/material-icons.css";
 
 html {
   height: 100%;
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #DDDDDD;
     height: 100%;
   }
 }
@@ -25,7 +26,7 @@ td.fc-event-container {
     padding: 0 10px;
     position: absolute;
     top: -30px;
-    z-index: 150;
+    z-index: 1500;
     white-space: nowrap;
     .arrow-down {
       width: 0;
@@ -35,7 +36,7 @@ td.fc-event-container {
       border-top: 8px solid #c8c8c8;
       position: absolute;
       left: 7px;
-      z-index: 100;
+      z-index: 1000;
       &:after {
         border-color: #f8f8f8 transparent transparent transparent;
         border-style: solid;
@@ -45,7 +46,7 @@ td.fc-event-container {
         position: absolute;
         left: -8px;
         top: -10px;
-        z-index: 200;
+        z-index: 2000;
       }
     }
   }

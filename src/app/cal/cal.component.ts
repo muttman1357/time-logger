@@ -35,7 +35,7 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
           header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay,listMonth'
+            right: ''
           },
           selectable: true,
           events: data
