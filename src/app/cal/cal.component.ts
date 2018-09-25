@@ -57,6 +57,9 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
+  /**
+   * Loads calendar events
+   */
   loadEvents() {
     this.loadSub = this.calDataService.getEvents('/times').subscribe(
       data => {
@@ -67,29 +70,50 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
+  /**
+   * Mouseover creates a tooltip and injects it
+   * into the DOM on task hover.
+   * @param the custom event
+   */
   eventMouseOver(e) {
     let ren = this.eventRender(e);
     let target = ren.detail.jsEvent.currentTarget;
     target.insertAdjacentHTML('afterbegin', '<div class="tl-popover">' + ren.detail.event.title + '<div class="arrow-down"></div></div>');
   }
 
+  /**
+   * Removes the tooltip from the DOM.
+   * @param e
+   */
   eventMouseOut(e) {
     let ren = this.eventRender(e);
     let target = ren.detail.jsEvent.currentTarget;
     target.removeChild(target.firstElementChild);
   }
 
+  /**
+   * Renders the custom event. Helper method to mouse events.
+   * @param the custom event
+   * @returns the custom event
+   */
   eventRender(e) {
     return e;
   }
 
+  /**
+   * If the calendar day is clicked will nav to add event for that day
+   * @param the event
+   */
   dayClick(e) {
     this.sharedService.addEvent(e);
     this.router.navigate(['/add']);
   }
 
+  /**
+   * Clicking on the event will open up a modal showing details of the event
+   * @param e
+   */
   eventClick(e) {
-    console.log(e);
     this.log.emit(e.event.key);
   }
 
