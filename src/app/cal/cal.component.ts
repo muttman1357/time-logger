@@ -67,6 +67,25 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
+  eventMouseOver(e) {
+    let ren = this.eventRender(e);
+    let target = ren.detail.jsEvent.currentTarget;
+    console.log(ren.detail.event.title);
+    target.insertAdjacentHTML('afterbegin', '<div class="tl-popover">' + ren.detail.event.title + '<div class="arrow-down"></div></div>');
+  }
+
+  eventMouseOut(e) {
+    let ren = this.eventRender(e);
+    // let target = ren.detail.jsEvent.currentTarget;
+    // let el = target.getElementById('popover');
+    // debugger;
+    // el.remove();
+  }
+
+  eventRender(e) {
+    return e;
+  }
+
   dayClick(e) {
     this.sharedService.addEvent(e);
     this.router.navigate(['/add']);

@@ -15,11 +15,41 @@ html {
 
 /****************** FullCalendar *******************/
 td.fc-event-container {
-  &:before {
-    content: "before";
-  }
-  &:after {
-    content: "after";
+  position: relative;
+  text-transform: capitalize;
+  div.tl-popover {
+    background-color: #f8f8f8;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+    text-align: center;
+    padding: 0 10px;
+    position: absolute;
+    top: -30px;
+    z-index: 150;
+    white-space: nowrap;
+    .arrow-down {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid #c8c8c8;
+      position: absolute;
+      left: 7px;
+      z-index: 100;
+      &:after {
+        border-color: #f8f8f8 transparent transparent transparent;
+        border-style: solid;
+        border-width: 8px 8px 0px 8px;
+        bottom: 1px;
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: -10px;
+        z-index: 200;
+      }
+    }
   }
 }
+
+
 
