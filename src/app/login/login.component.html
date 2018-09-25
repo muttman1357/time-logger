@@ -1,20 +1,30 @@
-<div>
-  <h1>Login</h1>
-  <form [formGroup]="myForm" autocomplete="off" novalidate (ngSubmit)="submitLogForm(myForm)">
-    <div class="form-group">
-      <label>Username:</label><br>
-      <input class="form-control" title="username" formControlName="username">
-      <div class="field-error-message" *ngIf="myForm.controls['username'].errors?.required && myForm.controls['username'].touched">Field is Mandatory</div>
+<div class="container-fluid">
+  <div class="col-md-4 offset-md-4">
+    <div class="login-form">
+      <h1>Login</h1>
+      <form [formGroup]="myForm" autocomplete="off" novalidate (ngSubmit)="submitLogForm(myForm)">
+        <div class="form-group">
+          <label>Username:</label><br>
+          <input class="form-control" title="username" formControlName="username">
+          <div class="field-error-message"
+               *ngIf="myForm.controls['username'].errors?.required && myForm.controls['username'].touched">Field is
+            Mandatory
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password:</label><br>
+          <input class="form-control" title="password" formControlName="password">
+          <div class="field-error-message"
+               *ngIf="myForm.controls['password'].errors?.required && myForm.controls['password'].touched">Field is
+            Mandatory
+          </div>
+        </div>
+        <p>
+          <button class="btn btn-dark" type="submit">Submit</button>
+        </p>
+      </form>
     </div>
-    <div class="form-group">
-      <label>Password:</label><br>
-      <input class="form-control" title="password" formControlName="password">
-      <div class="field-error-message" *ngIf="myForm.controls['password'].errors?.required && myForm.controls['password'].touched">Field is Mandatory</div>
-    </div>
-    <p>
-      <button class="btn btn-dark" type="submit">Submit</button>
-    </p>
-  </form>
+  </div>
 </div>
 
 

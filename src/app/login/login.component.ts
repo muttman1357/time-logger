@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   submitLogForm(form) {
     if(form.valid) {
-
+      console.log('form submitted');
     }
   }
 

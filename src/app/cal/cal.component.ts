@@ -33,7 +33,7 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
           editable: true,
           eventLimit: false,
           header: {
-            left: 'prev,next today',
+            left: 'prev,next',
             center: 'title',
             right: ''
           },
@@ -73,7 +73,7 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
   /**
    * Mouseover creates a tooltip and injects it
    * into the DOM on task hover.
-   * @param the custom event
+   * @param  custom event
    */
   eventMouseOver(e) {
     let ren = this.eventRender(e);
