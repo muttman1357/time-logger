@@ -13,13 +13,15 @@ import {AddModule} from './add/add.module';
 import {LoginModule} from './login/login.module';
 import { AlertComponent } from './_directives/alert/alert.component';
 import {AlertService} from './_directives/alert/services/alert.service';
-import {JwtInterceptor} from './_helpers/jwt.interceptor';
+import {JwtInterceptor} from './auth/helpers/jwt.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { UserComponent } from './auth/services/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent
+    AlertComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
