@@ -11,10 +11,15 @@ import {UpdateModule} from './update/update.module';
 import {ReportsModule} from './reports/reports.module';
 import {AddModule} from './add/add.module';
 import {LoginModule} from './login/login.module';
+import { AlertComponent } from './_directives/alert/alert.component';
+import {AlertService} from './_directives/alert/services/alert.service';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,14 @@ import {LoginModule} from './login/login.module';
     AddModule,
     LoginModule
   ],
-  providers: [],
+  providers: [
+    AlertService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
