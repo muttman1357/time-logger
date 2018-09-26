@@ -62,9 +62,9 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
    * Loads calendar events
    */
   loadEvents() {
-    this.loadSub = this.calDataService.getEvents('/times').subscribe(
+    this.loadSub = this.calDataService.getEvents('times').subscribe(
       data => {
-        this.calendarOptions.events = data;
+        this.calendarOptions.events = Time.TimeObjectToArray(data);
         this.ucCalendar.renderEvents(this.calendarOptions.events);
       },
       error => console.log(error)
