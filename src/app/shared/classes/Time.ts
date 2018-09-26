@@ -32,5 +32,24 @@ export class Time {
     let str = '0' + number;
     return str.slice(-2);
   }
+
+  /**
+   * Turns an object with key as property in
+   * an array of objects
+   * @param obj object
+   * @returns {any[]}
+   */
+  static TimeObjectToArray(obj) {
+    let times = [];
+
+    for(let prop in obj) {
+      if(obj.hasOwnProperty(prop)) {
+        if(prop === '__proto__') {}
+        obj[prop].key = prop;
+        times.push(obj[prop]);
+      }
+    }
+    return times;
+  }
 }
 

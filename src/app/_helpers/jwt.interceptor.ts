@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('Hello Interceptor');
     debugger;
     // testing
     let testObject = { 'username': 'ron', 'token': 1234};

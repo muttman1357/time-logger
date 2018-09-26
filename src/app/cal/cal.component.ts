@@ -5,6 +5,7 @@ import {CalDataService} from './services/cal-data.service';
 import {Subscription} from 'rxjs/Subscription';
 import {SharedService} from '../shared/services/shared.service';
 import {Router} from '@angular/router';
+import {Time} from '../shared/classes/Time';
 
 @Component({
   selector: 'tl-cal',
@@ -27,7 +28,7 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.calSub = this.calDataService.getEvents('/times').subscribe(
+    this.calSub = this.calDataService.getEvents('times').subscribe(
       data => {
         this.calendarOptions = {
           editable: true,
@@ -38,7 +39,7 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
             right: ''
           },
           selectable: true,
-          events: data
+          events: Time.TimeObjectToArray(data)
         };
       },
       error => console.log(error)

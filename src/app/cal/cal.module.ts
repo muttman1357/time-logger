@@ -5,6 +5,7 @@ import { FullCalendarModule } from 'ng-fullcalendar';
 import {CalService} from './services/cal.service';
 import {CalDataService} from './services/cal-data.service';
 import {SharedModule} from '../shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     CommonModule,
     FullCalendarModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports: [
     CalComponent
