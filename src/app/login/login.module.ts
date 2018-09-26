@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {LoginComponent} from './login.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LoginRouting} from './login.routing';
+import {LoginRoutingModule} from './login.routing';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import {LoginRouting} from './login.routing';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LoginRouting
+    LoginRoutingModule
   ],
   exports: [
     LoginComponent

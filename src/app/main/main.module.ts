@@ -5,6 +5,7 @@ import {TimeLogModule} from '../timelog/timelog.module';
 import {DetailLogModule} from '../detail-log/detail-log.module';
 import {MainRouting} from './main.routing';
 import {CalModule} from '../cal/cal.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {CalModule} from '../cal/cal.module';
     TimeLogModule,
     DetailLogModule,
     MainRouting,
-    CalModule
+    CalModule,
+    SharedModule
   ],
   exports: [MainComponent],
   providers: []

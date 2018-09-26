@@ -21,7 +21,7 @@ export class ReportsComponent implements OnInit {
         let content = this.decodeBase64(data.content);
         console.log(content);
         this.ds = content.contents;
-        debugger;
+        // debugger;
 
         this.ds.forEach(d => {
           this.buildLine(d['monthlySales']);
