@@ -14,7 +14,7 @@ export class UserService {
   getById(id: number) {
     return this.http.get('' + id);
   }
-  
+
   create(user: User) {
     return this.http.post('', user);
   }
