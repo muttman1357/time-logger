@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
-import {LoginService} from './services/login.service';
 import {AuthenticationService} from './services/authentication.service';
 
 @Component({
@@ -21,10 +20,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.myForm = this.fb.group({
-      username: ['', [
+      username: ['ron.mares@gmail.com', [
         Validators.required
       ]],
-      password: ['', [
+      password: ['3u!esasA', [
         Validators.required
       ]]
     });
@@ -36,20 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(form);
       let username = form.controls.username.value;
       let password = form.controls.password.value;
-      debugger;
-      this.authService.login(username, password).then(
-        data => console.log(data)
-      ).catch(error => {
-        // Handle Errors here.
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        if (errorCode === 'auth/wrong-password') {
-          alert('Wrong password.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-      });
+      this.authService.login(username, password);
     }
   }
 
