@@ -11,10 +11,12 @@ import {UpdateModule} from './update/update.module';
 import {ReportsModule} from './reports/reports.module';
 import {AddModule} from './add/add.module';
 import {LoginModule} from './login/login.module';
-import { AlertComponent } from './_directives/alert/alert.component';
-import {AlertService} from './_directives/alert/services/alert.service';
+import { AlertComponent } from './alert/alert.component';
+import {AlertService} from './alert/services/alert.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthGuard} from './auth/_guards/auth.guard';
+import {AuthenticationService} from './auth/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
     LoginModule
   ],
   providers: [
+    AuthGuard,
+    AuthenticationService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,

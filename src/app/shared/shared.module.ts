@@ -4,6 +4,7 @@ import {SharedService} from './services/shared.service';
 import {CommonModule} from '@angular/common';
 import {NavComponent} from './nav/nav.component';
 import {RouterModule} from '@angular/router';
+import {UserService} from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {RouterModule} from '@angular/router';
     NavComponent
   ],
 
-  providers: [SharedService]
+  providers: [SharedService, UserService]
 })
 
 export class SharedModule {}

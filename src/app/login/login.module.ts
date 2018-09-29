@@ -4,7 +4,8 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginRoutingModule} from './login.routing';
 import {HttpClientModule} from '@angular/common/http';
-import {AuthenticationService} from './services/authentication.service';
+import {AuthenticationService} from '../auth/services/authentication.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {AuthenticationService} from './services/authentication.service';
     FormsModule,
     ReactiveFormsModule,
     LoginRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   exports: [
     LoginComponent

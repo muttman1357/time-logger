@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
-import {AuthenticationService} from './services/authentication.service';
+import {AuthenticationService} from '../auth/services/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'tl-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -29,10 +31,28 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
+  loginWithGoogle() {
+    this.authService.loginWithGoogle().then(
+      auth => {
+        console.log(auth);
+        this.router.navigate(['/main']);
+      }
+    ).catch(error => {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      console.log(`${errorCode} ${errorMessage}`);
+    });
+  }
+
+
+
 
   submitLogForm(form) {
     if(form.valid) {
-      console.log(form);
       let username = form.controls.username.value;
       let password = form.controls.password.value;
       this.authService.login(username, password);
