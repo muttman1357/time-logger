@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.myForm = this.fb.group({
-      username: ['ron.mares@gmail.com', [
+      username: ['', [
         Validators.required
       ]],
-      password: ['3u!esasA', [
+      password: ['', [
         Validators.required
       ]]
     });

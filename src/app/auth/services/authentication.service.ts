@@ -39,7 +39,6 @@ export class AuthenticationService {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/main';
     this.afAuth.auth.signInWithEmailAndPassword(username, password).then(
       user => {
-        console.log(user);
         if(user && user.user['qa']) { // qa is the token
           localStorage.setItem('currentUser', JSON.stringify(user));
           // login successful so redirect to return url

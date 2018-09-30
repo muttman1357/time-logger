@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
           <label>Password:</label><br>
-          <input class="form-control" title="password" formControlName="password">
+          <input type="password" class="form-control" title="password" formControlName="password">
           <div class="field-error-message"
                *ngIf="myForm.controls['password'].errors?.required && myForm.controls['password'].touched">Field is
             Mandatory
