@@ -31,14 +31,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  logout() {
-    this.authService.logout();
-  }
-
   loginWithGoogle() {
     this.authService.loginWithGoogle().then(
-      auth => {
-        console.log(auth);
+      user => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
         this.router.navigate(['/main']);
       }
     ).catch(error => {

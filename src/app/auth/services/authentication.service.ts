@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AngularFireAuth} from 'angularfire2/auth';
 import firebase from 'firebase';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthenticationService {
   private user: Observable<firebase.User> = null;
   private userDetails: firebase.User = null;
+  private returnUrl: string;
 
   constructor(private http: HttpClient,
               private afAuth: AngularFireAuth,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute)
+  {
     this.user = this.afAuth.user;
 
     this.user.subscribe(
@@ -32,11 +35,15 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/main';
     this.afAuth.auth.signInWithEmailAndPassword(username, password).then(
       user => {
         console.log(user);
         if(user && user.user['qa']) { // qa is the token
-          this.router.navigate(['/main']);
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          // login successful so redirect to return url
+          this.router.navigateByUrl(this.returnUrl);
         }
       }
     )
@@ -55,7 +62,10 @@ export class AuthenticationService {
 
   logout() {
     this.afAuth.auth.signOut().then(
-      () => this.router.navigate(['/login'])
+      () => {
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/login']);
+      }
     );
 }
 

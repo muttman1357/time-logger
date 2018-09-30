@@ -3,10 +3,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from "@angular/router";
 import firebase from 'firebase';
+import {from} from 'rxjs/observable/from';
 
 @Injectable()
 export class UserService {
   authState: any = null;
+  idToken: any = null;
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
@@ -34,6 +36,7 @@ export class UserService {
 
   // Returns current user UID
   get currentUserId(): string {
+    debugger;
     return this.authenticated ? this.authState.uid : '';
   }
 
@@ -47,6 +50,20 @@ export class UserService {
     if (!this.authState) { return 'Guest'; }
     else if (this.currentUserAnonymous) { return 'Anonymous'; }
     else { return this.authState['displayName'] || 'User without a Name'; }
+  }
+
+  getIdTokenObservable() {
+    // return from(
+    //   firebase.auth().currentUser.getIdToken()
+    // );
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    if(user) {
+      return user.user.stsTokenManager.accessToken;
+    }
+    else {
+      console.log('no token - getIdTokenObservable');
+      this.router.navigate(['/login']);
+    }
   }
 
   //// Social Auth ////

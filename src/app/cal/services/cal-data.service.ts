@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserService} from '../../shared/user/user.service';
 
 @Injectable()
 export class CalDataService {
 
   constructor(private db: AngularFireDatabase,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private userService: UserService) { }
 
   // getEvents(listPath): Observable<any> {
   //   return this.db.list(listPath).snapshotChanges().map(changes => {

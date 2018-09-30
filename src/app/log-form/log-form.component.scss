@@ -1,9 +1,15 @@
-form {
-  padding: 20px;
-  .field-error-message {
-    color: red;
-  }
-  .form-field-input {
-    width: 100%;
+.log-form {
+  width: 50%;
+  margin: 0 auto;
+  min-width: 405px;
+  form {
+    padding: 20px;
+    .field-error-message {
+      color: red;
+    }
+    .form-field-input {
+      width: 100%;
+    }
   }
 }
+

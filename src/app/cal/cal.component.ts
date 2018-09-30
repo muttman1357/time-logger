@@ -42,7 +42,10 @@ export class CalComponent implements OnInit, OnDestroy, AfterViewInit {
           events: Time.TimeObjectToArray(data)
         };
       },
-      error => console.log(error)
+      error => {
+        console.log(error);
+        this.router.navigate(['/login']);
+      }
     );
 
   }

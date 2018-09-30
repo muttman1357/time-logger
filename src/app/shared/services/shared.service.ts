@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ReplaySubject} from 'rxjs/ReplaySubject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class SharedService {

@@ -9,16 +9,50 @@ html {
   height: 100%;
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: #DDDDDD;
+    color: #ffffff;
+    background-color: #111111;
     height: 100%;
   }
 }
 
 /****************** FullCalendar *******************/
+//.fc-button-group {
+//  button {
+//    background: darken(#343a40, 10%);
+//  }
+//}
+
+.fc-state-hover {
+  background-position: unset !important;
+}
+.fc-center {
+  color: #fff;
+  background: #343a40 !important;
+}
+
+.fc-state-default {
+  color: #000;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.fc-day-header {
+  &.fc-widget-header {
+    &.fc-sun, &.fc-mon, &.fc-tue, &.fc-wed, &.fc-thu, &.fc-fri, &.fc-sat {
+      color: #fff;
+      background: lighten(#343a40, 10%);
+    }
+  }
+}
+
 td.fc-event-container {
   position: relative;
   text-transform: capitalize;
+  .fc-content {
+    color: #000000;
+  }
   div.tl-popover {
+    color: #000;
     background-color: #f8f8f8;
     border: 1px solid #c8c8c8;
     border-radius: 5px;
